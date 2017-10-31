@@ -1,2 +1,2 @@
-web: gunicorn truth-or-dare-site.wsgi --log-file -
+web: gunicorn game:app
 worker: python worker.py
