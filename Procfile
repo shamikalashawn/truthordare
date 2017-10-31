@@ -1,2 +1,2 @@
-web: gunicorn game:app
+web: gunicorn game.wsgi:application —-log-file -
 worker: python worker.py
