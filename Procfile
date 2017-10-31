@@ -1,2 +1,2 @@
-web: gunicorn game.wsgi:application --log-file - --log-level debug
+web: gunicorn project.wsgi:application --log-file - --log-level debug
 worker: python worker.py
