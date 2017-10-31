@@ -1,2 +1,2 @@
-web: gunicorn game.wsgi:application --log-file - --log-level debug
+web: gunicorn —chdir TruthOrDare game:app
 worker: python worker.py
