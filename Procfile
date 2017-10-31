@@ -1,2 +1,2 @@
-web: gunicorn —chdir TruthOrDare game:app
+web: gunicorn -—chdir TruthOrDare game:app
 worker: python worker.py
