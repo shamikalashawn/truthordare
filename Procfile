@@ -1,2 +1,2 @@
-web: gunicorn game:app
+web: gunicorn truthordare:app
 worker: python worker.py
