@@ -1,2 +1,2 @@
-web: gunicorn game.wsgi
+web: gunicorn game:app
 worker: python worker.py
