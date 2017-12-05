@@ -1,2 +1,2 @@
-web: cd truthordare && gunicorn truthordare.wsgi --log-file -
+web: cd game && gunicorn game.wsgi --log-file -
 worker: python worker.py
