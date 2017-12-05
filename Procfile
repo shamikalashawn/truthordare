@@ -1,2 +1,2 @@
-web: gunicorn game:app
+web: gunicorn LogReg:app
 worker: python worker.py
