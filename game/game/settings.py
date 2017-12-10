@@ -31,8 +31,6 @@ ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '.herokuapp.com/']
 # Application definition
 
 INSTALLED_APPS = [
-    'apps.truthordare',
-    'apps.LogReg',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'apps.truthordare',
+    'apps.LogReg',
 ]
 
 MIDDLEWARE = [
@@ -71,7 +71,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wsgi.application'
+# WSGI_APPLICATION = 'wsgi.application'
+WSGI_APPLICATION = 'game.wsgi.application'
 
 
 # Database
@@ -144,6 +145,8 @@ STATICFILES_DIRS = (
     # os.path.normpath(os.path.join(BASE_DIR, 'apps/LogReg/static')),
     # os.path.normpath(os.path.join(BASE_DIR, 'apps/truthordare/static')),
 )
+
+
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
