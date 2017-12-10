@@ -25,7 +25,7 @@ SECRET_KEY = 'ycg(3d4&ou26+jd&0!zepvb-)%ag=v8n@q7&)g@*j$6e-+-1b8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'https://nameless-earth-61682.herokuapp.com/']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'https://boiling-gorge-18646.herokuapp.com/']
 
 
 # Application definition
@@ -127,12 +127,15 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'apps/LogReg/static')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    # os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(BASE_DIR, 'apps/truthordare/static'),
 )
 
 # Simplified static file serving.
