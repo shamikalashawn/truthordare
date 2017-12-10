@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Truth Or Dare</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'truthordare/css/style.css' %}">
+    <script type="text/javascript" src="{% static 'truthordare/js/friendly.js' %}"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('button[name="truth"]').click(function(){
+          let prompt = pickTruthPrompt(truth);
+          $('#prompt').html("<p class='prompt'>" + prompt + "</p>")
+        });
+        $('button[name="dare"]').click(function(){
+          let prompt = pickDarePrompt(dare);
+          $('#prompt').html("<p class='prompt'>" + prompt + "</p>")
+        });
+        $('button[name="refresh"]').click(function(){
+          dareNum = [];
+          truthNum = [];
+          $('#prompt').html("<p class='prompt'></p>")
+        });
+        $('#adultLink').click(function (e) {
+          e.preventDefault();
+          if(confirm('Are you 18 years of age or older?')){
+            window.location.href="{% url 'truthordare:adult' %}";
+          }
+          else{
+            alert('Sorry!  Gotta keep it friendly for now.');
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'logreg:logout' %}">Logout <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <button type="button" class="btn-block btn btn-primary btn-lg" name="truth">Truth</button>
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+          <button type="button" class="btn-block btn btn-primary btn-lg" name="dare">Dare</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg" id="prompt">
+
+        </div>
+      </div>
+      <footer>
+        <div class="row">
+          <div class="col-lg-3">
+
+          </div>
+          <div class="col-lg-4">
+            <button type="button" class="btn btn-primary btn-block" name="refresh">Start Over</button>
+          </div>
+        </div>
+        <p>Truth and Dare prompts collected from the following site:
+        <a href="https://icebreakerideas.com/truth-or-dare-questions">Ice Breaker Ideas Truth or Dare Questions</a></p>
+        <a id="adultLink" href="{% url 'truthordare:adult' %}">Adult version</a>
+      </footer>
+    </div>
+  </body>
+</html>
