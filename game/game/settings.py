@@ -89,6 +89,20 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+from urllib import parse
+import psycopg2
+
+parse.uses_netloc.append("postgres")
+url = parse.urlparse(os.environ["DATABASE_URL"])
+
+conn = psycopg2.connect(
+    database=url.path[1:],
+    user=url.username,
+    password=url.password,
+    host=url.hostname,
+    port=url.port
+)
 # import dj_database_url
 #
 # DATABASES = {
@@ -167,3 +181,6 @@ CHANNEL_LAYERS = {
         "ROUTING": "chat.routing.channel_routing",
     },
 }
+
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
