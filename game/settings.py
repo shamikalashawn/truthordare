@@ -71,10 +71,10 @@ TEMPLATES = [
     },
 ]
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'apps/LogReg/templates'),
-    os.path.join(BASE_DIR, 'apps/truthordare/templates'),
-)
+# TEMPLATE_DIRS = (
+#     os.path.join(BASE_DIR, 'apps/LogReg/templates'),
+#     os.path.join(BASE_DIR, 'apps/truthordare/templates'),
+# )
 
 # WSGI_APPLICATION = 'wsgi.application'
 WSGI_APPLICATION = 'game.wsgi.application'
