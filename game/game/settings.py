@@ -82,30 +82,56 @@ TEMPLATES = [
 # WSGI_APPLICATION = 'wsgi.application'
 WSGI_APPLICATION = 'game.wsgi.application'
 
+HEROKU = bool(os.environ.get('DATABASE_URL'))
+
+if HEROKU:
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config()
+    DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+    DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': 'cache.sqlite',
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 #
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "lashawn",
+        "USER": "lashawn",
+        "PASSWORD": "",
+        "HOST": "localhost",
+        "PORT": "",
     }
 }
 
-
-
-os.environ['DATABASE_URL'] = <URL>
-parse.uses_netloc.append("postgres")
-url = parse.urlparse(os.environ["DATABASE_URL"])
-
-conn = psycopg2.connect(
-    database=url.path[1:],
-    user=url.username,
-    password=url.password,
-    host=url.hostname,
-    port=url.port
-)
+# db_from_env = dj_database_url.config()
+# DATABASES['default'].update(db_from_env)
+#
+# # os.environ['DATABASE_URL'] = <URL>
+# parse.uses_netloc.append("postgres")
+# url = parse.urlparse(os.environ["DATABASE_URL"])
+#
+# conn = psycopg2.connect(
+#     database=url.path[1:],
+#     user="lashawn",
+#     password="",
+#     host="localhost",
+#     port=""
+# )
 # import dj_database_url
 #
 # DATABASES = {
@@ -184,6 +210,3 @@ CHANNEL_LAYERS = {
         "ROUTING": "chat.routing.channel_routing",
     },
 }
-
-db_from_env = dj_database_url.config()
-DATABASES[‘default’].update(db_from_env)
