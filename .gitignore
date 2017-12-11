@@ -1,3 +1,4 @@
 myenv
 virtualenv
 *.pyc
+process.env.SECRET
