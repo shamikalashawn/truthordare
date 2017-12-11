@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from urllib import parse
+import psycopg2
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -90,9 +93,9 @@ DATABASES = {
     }
 }
 
-from urllib import parse
-import psycopg2
 
+
+os.environ['DATABASE_URL'] = <URL>
 parse.uses_netloc.append("postgres")
 url = parse.urlparse(os.environ["DATABASE_URL"])
 
@@ -182,5 +185,5 @@ CHANNEL_LAYERS = {
     },
 }
 
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+db_from_env = dj_database_url.config()
+DATABASES[‘default’].update(db_from_env)
