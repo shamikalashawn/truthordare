@@ -39,15 +39,16 @@ class userDBManager(models.Manager):
             return [False, errors]
         else:
             check_user = userDB.objects.filter(username=data['username'])
+            print('check_user data: ', check_user)
             if not check_user:
                 errors.append(['login', "Username or password not correct.  Please try again."])
-            if not bcrypt.checkpw(data['password'].encode(), check_user[0].password.encode()):
+            if check_user and not bcrypt.checkpw(data['password'].encode(), check_user[0].password.encode()):
                 errors.append(['login', "Username or password not correct.  Please try again."])
             if errors:
                 return [False, errors]
             else:
                 user = check_user[0]
-                print(user)
+                print('user name and password correct: ', user)
                 return [True, user]
 
 #edit user methods
