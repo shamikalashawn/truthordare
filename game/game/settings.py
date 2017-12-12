@@ -102,7 +102,7 @@ DATABASES = {
         "USER": "lashawn",
         "PASSWORD": "",
         "HOST": "localhost",
-        "PORT": "",
+        "PORT": "5432",
     }
 }
 
@@ -131,7 +131,7 @@ conn = psycopg2.connect(
     user="lashawn",
     password="",
     host="localhost",
-    port=""
+    port="5432"
 )
 # import dj_database_url
 #
