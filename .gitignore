@@ -1,4 +1,4 @@
 myenv
 virtualenv
 *.pyc
-secret.sh
+Secret.sh
