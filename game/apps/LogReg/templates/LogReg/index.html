@@ -10,16 +10,23 @@
   <body>
     <h1>Truth or Dare</h1>
     <div class="container">
-      {% if messages %}
-      {% for message in messages %}
-      <p>{{message}}</p>
-      {% endfor %}
-      {% endif %}
       <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3, col-sm-1">
 
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4, col-sm-8">
+          {% if messages %}
+          {% for message in messages %}
+          <p>{{message}}</p>
+          {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2, col-sm-1">
+
+        </div>
+        <div class="col-lg-4, col-sm-5">
           <form action="{% url 'logreg:register' %}" method="post">
             {% csrf_token %}
             <input type="text" name="username" placeholder="Username">
@@ -29,18 +36,16 @@
             <button class="btn btn-primary" type="submit" name="attempt" value="register">Register</button>
           </form>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-
-        </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4, col-sm-5">
           <form action="{% url 'logreg:login' %}" method="post">
             {% csrf_token %}
             <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password ********">
             <button type="submit" name="attempt" value="login" class='btn btn-primary'>Login</button>
           </form>
+        </div>
+        <div class="col-lg-2, col-sm-1">
+
         </div>
       </div>
     </div>
