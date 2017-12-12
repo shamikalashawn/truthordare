@@ -84,18 +84,6 @@ WSGI_APPLICATION = 'game.wsgi.application'
 
 HEROKU = bool(os.environ.get('DATABASE_URL'))
 
-if HEROKU:
-    import dj_database_url
-    DATABASES['default'] = dj_database_url.config()
-    DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-    DEBUG_TOOLBAR_PATCH_SETTINGS = False
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': 'cache.sqlite',
-    },
-}
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -117,6 +105,19 @@ DATABASES = {
         "PORT": "",
     }
 }
+
+if HEROKU:
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config()
+    DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+    DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
+    CACHES = {
+        'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': 'cache.sqlite',
+        },
+    }
 
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
