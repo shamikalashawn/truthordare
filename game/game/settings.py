@@ -130,7 +130,7 @@ conn = psycopg2.connect(
     database="lashawn",
     user="lashawn",
     password="",
-    host="localhost",
+    host="/tmp/",
     port="5432"
 )
 # import dj_database_url
