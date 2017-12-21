@@ -42,7 +42,7 @@ class userDBManager(models.Manager):
             print('check_user data: ', check_user)
             if not check_user:
                 errors.append(['login', "Username or password not correct.  Please try again."])
-            if check_user and not bcrypt.checkpw(data['password'].encode(), check_user[0].password.encode()):
+            if not bcrypt.checkpw(data['password'].encode(), check_user[0].password.encode()):
                 errors.append(['login', "Username or password not correct.  Please try again."])
             if errors:
                 return [False, errors]
@@ -96,6 +96,6 @@ class userDB(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
-        return 'ID: %s | Username: %s' % (self.id, self.username)
+        return 'ID: %s | Username: %s | Password: %s' % (self.id, self.username, self.password)
     objects = userDBManager()
 # Create your models here.
