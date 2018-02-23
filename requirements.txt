@@ -26,6 +26,7 @@ pycparser==2.17
 pydotplus==2.0.2
 pyflakes==1.6.0
 pyparsing==2.2.0
+python==3.6.4
 python-dateutil==2.6.0
 pytz==2017.2
 RandomWords==0.2.1
